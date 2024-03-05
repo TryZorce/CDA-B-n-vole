@@ -2,10 +2,9 @@
 require_once './components/header.php';
 displayHeader();
 ?>
-
     <main>
         <section class="main-content">
-            <h2>Accueil</h2>
+            <h2>Admin</h2>
             <p></p>
         </section>
     </main>

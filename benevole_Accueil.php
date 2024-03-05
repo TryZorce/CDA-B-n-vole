@@ -5,7 +5,7 @@ displayHeader();
 
     <main>
         <section class="main-content">
-            <h2>Accueil</h2>
+            <h2>Bénévole</h2>
             <p></p>
         </section>
     </main>
