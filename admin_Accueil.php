@@ -2,20 +2,16 @@
 require_once './components/header.php';
 displayHeader();
 ?>
-    <main>
-        <section class="main-content">
-            <h2>Admin</h2>
-            <p></p>
-        </section>
-    </main>
+    <section class="main-content">
+        <h2>Admin</h2>
+        <p></p>
+    </section>
 
-    <footer class="site-footer">
-        <div class="container">
-            <p>&copy; 2024 My Site. All rights reserved.</p>
-        </div>
-    </footer>
+<?php
+require_once './components/footer.php';
+displayFooter();
+?>
 
-    <script src="script.js"></script>
 </body>
 
 </html>
