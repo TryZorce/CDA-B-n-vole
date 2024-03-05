@@ -2,7 +2,6 @@
 
 ## Brief 5 - Volunteer
 
-[View the site](https://github.com/TryZorce/CDA-Benevole)
 ### Commands to run:
 
 ```shell
