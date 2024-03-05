@@ -30,6 +30,7 @@ function displayHeader()
             </nav>
         </div>
     </header>
+    <main>
     ';
 }
 ?>
