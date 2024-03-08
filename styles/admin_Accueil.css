@@ -1,0 +1,32 @@
+.main-content {
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    margin-bottom: 0px; /* Ajoutez une marge inférieure au conteneur des cartes */
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+    float: left;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.card p {
+    margin: 0;
+}
+
+.card strong {
+    font-weight: bold;
+}
+
+/* Clearfix pour les cartes */
+.card:nth-child(3n+1) {
+    clear: left;
+}

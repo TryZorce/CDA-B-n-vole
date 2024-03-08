@@ -25,7 +25,7 @@ function displayHeader()
                 <ul class="nav-links">
                     <li><a href="./index.php">Accueil</a></li>
                     <li><a href="./benevole_Accueil.php">Bénévole</a></li>
-                    <li><a href="./admin_Accueil.php">Admin</a></li>
+                    <li><a href="./admin_Login.php">Admin</a></li>
                 </ul>
             </nav>
         </div>

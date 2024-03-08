@@ -1,36 +1,51 @@
 <?php
-class Db {
+class Db
+{
     private $pathToCsv;
 
-    public function __construct($pathToCsv) {
+    public function __construct($pathToCsv)
+    {
         $this->pathToCsv = $pathToCsv;
     }
 
-    public function getPathToCsv() {
+    public function getPathToCsv()
+    {
         return $this->pathToCsv;
     }
 
-    public function setPathToCsv($pathToCsv) {
+    public function setPathToCsv($pathToCsv)
+    {
         $this->pathToCsv = $pathToCsv;
     }
 
-    public function readCsv() {
+    public function readCsv()
+    {
         return fopen($this->pathToCsv, 'r');
     }
 
-    public function openCsv() {
+    public function openCsv()
+    {
         return fopen($this->pathToCsv, 'ab');
     }
 
-    public function writeIntoCsv($file, $arrayToWrite) {
+    public function writeIntoCsv($file, $arrayToWrite)
+    {
+        if (!is_resource($file)) {
+            trigger_error("Le fichier CSV n'a pas pu être ouvert en mode écriture.", E_USER_ERROR);
+            return;
+        }
+
         fputcsv($file, $arrayToWrite);
     }
 
-    public function closeCsv($file) {
+
+    public function closeCsv($file)
+    {
         fclose($file);
     }
 
-    public function readFromCsv() {
+    public function readFromCsv()
+    {
         $data = [];
         $csv = $this->readCsv();
 
