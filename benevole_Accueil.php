@@ -8,6 +8,7 @@ displayHeader();
             <h2>Bénévole</h2>
             <p></p>
         </section>
+        <a href="./benevole_Form.php">Formulaire</a>
         
         <?php
 require_once './components/footer.php';
