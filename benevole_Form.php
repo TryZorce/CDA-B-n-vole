@@ -4,10 +4,10 @@ displayHeader();
 
 session_start();
 
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'benevole') {
-  header('Location: benevole_Login.php');
-  exit();
-}
+// if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'benevole') {
+//   header('Location: benevole_Login.php');
+//   exit();
+// }
 
 
 $nameError = $firstNameError = $ageError = $sexeError = $phoneError = $mailError = $regionError = $dispoError = $dispoHoraireError = $preferencesError = '';
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 <!-- Formulaire 1 -->
-<form method="post" class="one" action="" onsubmit="return validateform()">
+<form method="post" class="one" action="" >
   <div id="form1">
 
     <ul>
@@ -156,8 +156,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </li>
     </ul>
     <button type="button" onclick="previousform()" id="third">Précédent</button>
+    <button type="submit" onclick="validateform3(event)">Soumettre</button>
   </div>
 </form>
+
+
 
 <?php
 require_once './components/footer.php';
