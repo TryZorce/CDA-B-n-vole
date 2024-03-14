@@ -2,7 +2,7 @@
 require_once './components/header.php';
 displayHeader();
 ?>
-<form action="" class="admin_form">
+<form action="" class="admin_form"> 
     <label for="regions">Régions</label>
     <select name="regions">
         <option value="" selected disabled>Choissiez une région</option>
