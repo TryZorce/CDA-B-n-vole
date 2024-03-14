@@ -1,5 +1,12 @@
 <?php
+session_start();
+
 require_once './classes/Db.php';
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header('Location: admin_Login.php');
+    exit();
+}
 
 $regionError = $dateError = $nameError = $descriptionError = '';
 $region = $date = $name = $description = '';
