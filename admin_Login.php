@@ -11,7 +11,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         // et redirigez l'utilisateur vers la page d'accueil du panneau d'administration
         $_SESSION['username'] = $username;
         $_SESSION['role'] = 'admin';
-        header('Location: admin_accueil.php');
+        header('Location: admin_Accueil.php');
     } else {
         // Si les informations de connexion sont invalides, stockez un message d'erreur dans une variable de session
         $_SESSION['error'] = 'Nom d\'utilisateur ou mot de passe incorrect.';
@@ -22,20 +22,21 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     exit();
 }
 
-require_once './components/header.php';
-displayHeader();
-
 // Vérifiez si l'utilisateur a un rôle dans sa session
 if (isset($_SESSION['role'])) {
     // Vérifier la valeur du rôle
     if ($_SESSION['role'] == 'utilisateur') {
         header('Location: index.php');
     } elseif ($_SESSION['role'] == 'admin') {
-        header('Location: admin_accueil.php');
+        header('Location: admin_Accueil.php');
     }
     // Arrêtez l'exécution du script ici pour éviter d'envoyer du contenu HTML supplémentaire
     exit();
 }
+
+// Include the header after all the PHP processing
+require_once './components/header.php';
+displayHeader();
 
 // Affichez le message d'erreur s'il existe
 if (isset($_SESSION['error'])) {
@@ -46,21 +47,27 @@ if (isset($_SESSION['error'])) {
 
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Connexion à l'espace d'administration</title>
+    <title>Connexion à l'espace d'administration</title>
 </head>
+
 <body>
-	<h1>Connexion à l'espace d'administration</h1>
-	<form action="login.php" method="post">
-		<label for="username">Nom d'utilisateur :</label>
-		<input type="text" name="username" id="username" required>
-		<br>
-		<label for="password">Mot de passe :</label>
-		<input type="password" name="password" id="password" required>
-		<br>
-		<input type="submit" value="Se connecter">
-	</form>
+    <div class="main-content">
+
+        <h1>Connexion à l'espace d'administration</h1>
+        <form method="post" class="form-content">
+            <label for="username">Nom d'utilisateur :</label>
+            <input type="text" name="username" id="username" placeholder="admin" required>
+            <br>
+            <label for="password">Mot de passe :</label>
+            <input type="password" name="password" id="password" placeholder="password" required>
+            <br>
+            <input type="submit" value="Se connecter">
+        </form>
+    </div>
 </body>
+
 </html>
 
 <?php

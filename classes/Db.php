@@ -59,4 +59,51 @@ class Db
 
         return $data;
     }
+    public function deleteFromCsv($index) {
+        $data = $this->readFromCsv();
+        if (isset($data[$index])) {
+            unset($data[$index]);
+        }
+        $file = $this->openCsv();
+        $this->writeIntoCsv($file, $data);
+        $this->closeCsv($file);
+    }
+
+    public function updateIntoCsv($file, $data, $index)
+    {
+        if (($handle = fopen($file, 'c')) !== false) {
+            flock($handle, LOCK_EX);
+    
+            $row = [];
+            foreach ($data as $value) {
+                $row[] = '"' . str_replace('"', '""', $value) . '"';
+            }
+            $row = implode(',', $row) . "\n";
+    
+            $tempFile = tempnam(sys_get_temp_dir(), 'csv');
+            $tempHandle = fopen($tempFile, 'w');
+    
+            fseek($handle, 0);
+            $lineNumber = 0;
+            while (($line = fgets($handle)) !== false) {
+                if ($lineNumber == $index) {
+                    fwrite($tempHandle, $row);
+                } else {
+                    fwrite($tempHandle, $line);
+                }
+                $lineNumber++;
+            }
+    
+            fclose($tempHandle);
+            fclose($handle);
+    
+            rename($tempFile, $file);
+    
+            return true;
+        }
+    
+        return false;
+    }
+    
+
 }

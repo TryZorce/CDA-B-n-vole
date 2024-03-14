@@ -1,13 +1,21 @@
 <?php
+session_start();
+
 require_once './classes/Db.php';
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header('Location: admin_Login.php');
+    exit();
+}
+
 require_once './components/header.php';
 displayHeader();
 
 $db = new Db('./csv/events.csv');
 $data = $db->readFromCsv();
-
+echo '<h1 class="main-content">Listes des évenements</h1> ';
 if (!empty($data)) {
-    echo '<div class="main-content">';
+    echo '<div class="card-content">';
     foreach ($data as $row) {
         echo '<div class="card">';
         echo '<h3>' . htmlspecialchars($row[2]) . '</h3>';
@@ -21,9 +29,11 @@ if (!empty($data)) {
     echo '<p>Aucun événement trouvé.</p>';
 }
 ?>
-<a href="./admin_Form.php">Formulaire</a>
-
-
+<div class="button-wrapper">
+    <a href="./admin_Form.php">Formulaire</a>
+    <a href="./admin_Logout.php">Déconnexion</a>
+</div>
+    
 <?php
 require_once './components/footer.php';
 displayFooter();
