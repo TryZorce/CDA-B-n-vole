@@ -1,0 +1,51 @@
+.card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 98vw;
+    flex-direction: column;
+    margin-bottom: 0px;
+    /* Ajoutez une marge inférieure au conteneur des cartes */
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+    float: left;
+    width: 80%;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.card p {
+    margin: 0;
+}
+
+.card strong {
+    font-weight: bold;
+}
+
+/* Clearfix pour les cartes */
+.card:nth-child(3n+1) {
+    clear: left;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: space-around;
+
+    a {
+        text-decoration: none;
+        border: 1px solid var(--main-color);
+        border-radius: 5px;
+        padding: 10px;
+        color: white;
+        background-color: var(--main-color);
+        margin-bottom: 20px;
+    }
+}

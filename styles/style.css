@@ -1,6 +1,7 @@
 @import "./benevoleForm.css";
-
 @import "./admin_form.css";
+@import "./admin_Accueil.css";
+@import "./index.css";
 
 :root {
     --main-color: #175F83;
@@ -71,6 +72,21 @@ main {
     background-color: var(--secondary-color);
     margin: 3px;
     transition: all 0.3s ease;
+}
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
 }
 @media screen and (max-width: 768px) {
     .burger-menu {
