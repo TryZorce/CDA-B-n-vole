@@ -15,6 +15,7 @@ function displayHeader()
 <body>
     <header class="site-header">
         <div class="container">
+        <img src="./assets/logo-grenoble.png" class="img-link">
             <h1 class="site-title">Bénévolat</h1>
             <nav class="site-nav">
                 <div class="burger-menu">

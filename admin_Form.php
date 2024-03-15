@@ -17,7 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
     $description = $_POST["description"];
 
-    // Validation des données ici
 
     $db = new Db('./csv/events.csv');
     $file = $db->openCsv();
@@ -25,20 +24,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db->writeIntoCsv($file, $data);
     $db->closeCsv($file);
 
-    // Rediriger l'utilisateur vers admin_Accueil.php
     header("Location: admin_Accueil.php");
     exit();
 }
 
-// Fonction de validation de la date
 function validateDate($date)
 {
-    // Vérification du format de la date
     if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $date)) {
         return false;
     }
 
-    // Vérification de la validité de la date
     $timestamp = strtotime($date);
     if ($timestamp === false) {
         return false;
@@ -47,10 +42,8 @@ function validateDate($date)
     return true;
 }
 
-// Fonction de validation de la région
 function validateRegion($region)
 {
-    // Liste des régions autorisées
     $allowedRegions = [
         "Auvergne-Rhône-Alpes",
         "Bourgogne-Franche-Comté",
@@ -67,7 +60,6 @@ function validateRegion($region)
         "Provence-Alpes-Côte d'Azur"
     ];
 
-    // Vérification de la présence de la région dans la liste autorisée
     if (!in_array($region, $allowedRegions)) {
         return false;
     }
@@ -80,8 +72,8 @@ displayHeader();
 ?>
 
 <form action="admin_Form.php" method="POST" class="admin_form">
-    <label for="regions">Régions</label>
-    <select name="regions">
+    <label for="regions" >Régions</label>
+    <select name="regions" required>>
         <option value="" selected disabled>Choissiez une région</option>
         <option value="Auvergne-Rhône-Alpes" <?php if ($region === 'Auvergne-Rhône-Alpes'): ?>selected<?php endif; ?>>Auvergne-Rhône-Alpes</option>
         <option value="Bourgogne-Franche-Comté" <?php if ($region === 'Bourgogne-Franche-Comté'): ?>selected<?php endif; ?>>Bourgogne-Franche-Comté</option>
@@ -102,25 +94,26 @@ displayHeader();
     <?php endif; ?>
 
     <label for="date">Date</label>
-    <input type="date" id="date" name="date" value="<?php echo htmlspecialchars($date); ?>">
+    <input type="date" id="date" name="date" value="<?php echo htmlspecialchars($date); ?>" required>
     <?php if ($dateError !== ''): ?>
         <p style="color: red;"><?php echo $dateError; ?></p>
     <?php endif; ?>
 
     <label for="name">Nom de l'événement</label>
-    <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($name); ?>">
+    <input type="text" id="name" name="name" required value="<?php echo htmlspecialchars($name); ?>" >
     <?php if ($nameError !== ''): ?>
         <p style="color: red;"><?php echo $nameError; ?></p>
     <?php endif; ?>
 
     <label for="description">Description de l'événement</label>
-    <textarea id="description" name="description"><?php echo htmlspecialchars($description); ?></textarea>
+    <textarea id="description" name="description"required><?php echo htmlspecialchars($description); ?></textarea>
     <?php if ($descriptionError !== ''): ?>
         <p style="color: red;"><?php echo $descriptionError; ?></p>
     <?php endif; ?>
 
     <input type="submit" value="Créer l'événement">
 </form>
+<script src="./script/admin_Form.js"></script>
 
 <?php
 require_once './components/footer.php';

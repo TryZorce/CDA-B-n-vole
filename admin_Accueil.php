@@ -19,9 +19,10 @@ if (!empty($data)) {
     foreach ($data as $row) {
         echo '<div class="card">';
         echo '<h3>' . htmlspecialchars($row[2]) . '</h3>';
-        echo '<p><strong>Région:</strong> ' . htmlspecialchars($row[0]) . '</p>';
-        echo '<p><strong>Date:</strong> ' . htmlspecialchars($row[1]) . '</p>';
-        echo '<p><strong>Description:</strong> ' . htmlspecialchars($row[3]) . '</p>';
+        echo '<p>Région: ' . htmlspecialchars($row[0]) . '</p>';
+        echo '<p>Date: ' . htmlspecialchars($row[1]) . '</p>';
+        echo '<p>Description: ' . htmlspecialchars($row[3]) . '</p>';
+        echo '<a href="admin_AjoutBénéficiaire">' . 'Ajouter Bénéficiaire' . '</a>';
         echo '</div>';
     }
     echo '</div>';
